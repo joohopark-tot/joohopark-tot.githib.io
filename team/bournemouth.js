@@ -1,6 +1,5 @@
-const bournemouth = {
-  name: "Bournemouth",
-  players: [
+export default [
+
 
     { name:"Djordje Petrović", club:"Bournemouth", league:"Prem", nationality:"Serbia", position:"GK", age:26 },
     { name:"Christos Mandas", club:"Bournemouth", league:"Prem", nationality:"Greece", position:"GK", age:24 },
