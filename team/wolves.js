@@ -1,4 +1,5 @@
-export default [
+export const wolves = [
+
 
 
     { name:"José Sá", club:"Wolves", league:"Prem", nationality:"Portugal", position:"GK", age:33 },
