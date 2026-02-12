@@ -38,41 +38,73 @@
     </table>
 </div>
 
-<script type="module"></script><script>
+<script type="module">
+
 import players from "./team/allPlayers.js";
+
 let secretPlayer, attempts;
 
 function initGame() {
     secretPlayer = players[Math.floor(Math.random() * players.length)];
     attempts = 0;
-    const table = document.getElementById("results");
-    table.innerHTML = `<tr class="header-row"><td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td></tr>`;
+
+    document.getElementById("results").innerHTML =
+        `<tr class="header-row">
+            <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
+        </tr>`;
+
     document.getElementById("status").innerHTML = "Guess the hidden star!";
     document.getElementById("guessInput").value = "";
 }
 
-function showSuggestions() {
-    const val = document.getElementById("guessInput").value.toLowerCase();
-    const sugBox = document.getElementById("suggestions");
-    sugBox.innerHTML = "";
-    if (!val) return;
-    players.filter(p => p.name.toLowerCase().includes(val)).forEach(p => {
-        const d = document.createElement("div");
-        d.textContent = p.name;
-        d.onclick = () => { document.getElementById("guessInput").value = p.name; sugBox.innerHTML = ""; };
-        sugBox.appendChild(d);
-    });
-}
+//////////////////////////////////////////////////////
+// GOOGLE STYLE SEARCH
+//////////////////////////////////////////////////////
 
-function checkGuess() {
+window.showSuggestions = function() {
+
+    const val = document.getElementById("guessInput").value.toLowerCase().trim();
+    const sugBox = document.getElementById("suggestions");
+
+    sugBox.innerHTML = "";
+
+    if (!val) return;
+
+    players
+        .filter(p => p.name.toLowerCase().includes(val))
+        .slice(0,8)
+        .forEach(p => {
+
+            const d = document.createElement("div");
+            d.textContent = p.name;
+
+            d.onclick = () => {
+                document.getElementById("guessInput").value = p.name;
+                sugBox.innerHTML = "";
+            };
+
+            sugBox.appendChild(d);
+        });
+};
+
+//////////////////////////////////////////////////////
+
+window.checkGuess = function() {
+
     const input = document.getElementById("guessInput");
-    const guess = players.find(p => p.name.toLowerCase() === input.value.toLowerCase());
+
+    const guess = players.find(
+        p => p.name.toLowerCase() === input.value.toLowerCase()
+    );
+
     if (!guess) return;
 
     attempts++;
     input.value = "";
+    document.getElementById("suggestions").innerHTML = "";
 
     const row = document.getElementById("results").insertRow(1);
+
     const createCell = (text, cls) => {
         const c = row.insertCell();
         c.textContent = text;
@@ -80,21 +112,44 @@ function checkGuess() {
     };
 
     createCell(guess.name, guess.name === secretPlayer.name ? "green" : "gray");
-    createCell(guess.club, guess.club === secretPlayer.club ? "green" : (guess.league === secretPlayer.league ? "yellow" : "gray"));
+
+    createCell(
+        guess.club,
+        guess.club === secretPlayer.club
+            ? "green"
+            : (guess.league === secretPlayer.league ? "yellow" : "gray")
+    );
+
     createCell(guess.league, guess.league === secretPlayer.league ? "green" : "gray");
-    createCell(guess.nationality, guess.nationality === secretPlayer.nationality ? "green" : "gray");
-    createCell(guess.position, guess.position === secretPlayer.position ? "green" : "gray");
-   
-    const arrow = guess.age < secretPlayer.age ? "↑" : (guess.age > secretPlayer.age ? "↓" : "");
-    createCell(`${guess.age} ${arrow}`, guess.age === secretPlayer.age ? "green" : "yellow");
+
+    createCell(guess.nationality,
+        guess.nationality === secretPlayer.nationality ? "green" : "gray");
+
+    createCell(guess.position,
+        guess.position === secretPlayer.position ? "green" : "gray");
+
+    const arrow =
+        guess.age < secretPlayer.age ? "↑" :
+        guess.age > secretPlayer.age ? "↓" : "";
+
+    createCell(
+        `${guess.age} ${arrow}`,
+        guess.age === secretPlayer.age ? "green" : "yellow"
+    );
 
     if (guess.name === secretPlayer.name) {
-        document.getElementById("status").innerHTML = `🏆 <b>Correct! It was ${secretPlayer.name}!</b>`;
+
+        document.getElementById("status").innerHTML =
+            `🏆 <b>Correct! It was ${secretPlayer.name}!</b>`;
     }
-}
+};
+
+window.initGame = initGame;
 
 initGame();
-</<script type="module"></script>
+
+</script>
+
 </body>
 </html>
 
