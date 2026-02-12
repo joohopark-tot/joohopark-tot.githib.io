@@ -1,4 +1,5 @@
-export default [
+export const burnley = [
+
 
 
     { name:"Max Weiß", club:"Burnley", league:"Prem", nationality:"Germany", position:"GK", age:21 },
