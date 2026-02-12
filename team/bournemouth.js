@@ -1,4 +1,5 @@
-export default [
+export const bournemouth = [
+
 
 
     { name:"Djordje Petrović", club:"Bournemouth", league:"Prem", nationality:"Serbia", position:"GK", age:26 },
