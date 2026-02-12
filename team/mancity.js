@@ -1,6 +1,7 @@
 /* --- MANCHESTER CITY 2025/26 (Transfermarkt Verified) --- */
 
-const manCity = [
+export default [
+
 
 { name:"Gianluigi Donnarumma", club:"Man City", league:"Prem", nationality:"Italy", position:"GK", age:26 },
 { name:"James Trafford", club:"Man City", league:"Prem", nationality:"England", position:"GK", age:23 },
