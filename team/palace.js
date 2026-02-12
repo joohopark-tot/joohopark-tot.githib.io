@@ -1,6 +1,5 @@
- const crystalPalace = {
-  name: "Crystal Palace",
-  players: [
+export default [
+
 
     { name:"Dean Henderson", club:"Crystal Palace", league:"Prem", nationality:"England", position:"GK", age:28 },
     { name:"Walter Benítez", club:"Crystal Palace", league:"Prem", nationality:"Argentina", position:"GK", age:33 },
