@@ -1,4 +1,5 @@
-export default [
+export const leeds = [
+
 
 
     { name:"Lucas Perri", club:"Leeds", league:"Prem", nationality:"Brazil", position:"GK", age:28 },
