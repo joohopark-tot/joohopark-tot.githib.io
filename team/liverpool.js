@@ -1,4 +1,5 @@
-export default [
+export const liverpool = [
+
 
 
     { name:"Giorgi Mamardashvili", club:"Liverpool", league:"Prem", nationality:"Georgia", position:"GK", age:25 },
