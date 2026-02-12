@@ -1,4 +1,4 @@
-export default [
+export const sunderland = [
 
 
     { name:"Robin Roefs", club:"Sunderland", league:"Prem", nationality:"Netherlands", position:"GK", age:23 },
