@@ -1,4 +1,5 @@
-export default [
+export const palace = [
+
 
 
     { name:"Dean Henderson", club:"Crystal Palace", league:"Prem", nationality:"England", position:"GK", age:28 },
