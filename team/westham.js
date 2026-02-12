@@ -1,6 +1,4 @@
-const westham = {
-  name: "West Ham",
-  players: [
+export default [
 
     { name:"Mads Hermansen", club:"West Ham", league:"Prem", nationality:"Denmark", position:"GK", age:25 },
     { name:"Alphonse Areola", club:"West Ham", league:"Prem", nationality:"France", position:"GK", age:32 },
