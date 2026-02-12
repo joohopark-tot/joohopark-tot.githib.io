@@ -1,6 +1,5 @@
-const wolves = {
-  name: "Wolves",
-  players: [
+export default [
+
 
     { name:"José Sá", club:"Wolves", league:"Prem", nationality:"Portugal", position:"GK", age:33 },
     { name:"Sam Johnstone", club:"Wolves", league:"Prem", nationality:"England", position:"GK", age:32 },
