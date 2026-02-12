@@ -1,6 +1,5 @@
-const astonvilla = {
-  name: "Aston Villa",
-  players: [
+export default [
+
 
     { name:"Emiliano Martínez", club:"Aston Villa", league:"Prem", nationality:"Argentina", position:"GK", age:33 },
     { name:"Marco Bizot", club:"Aston Villa", league:"Prem", nationality:"Netherlands", position:"GK", age:34 },
