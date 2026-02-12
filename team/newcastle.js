@@ -1,6 +1,5 @@
-const newcastle = {
-  name: "Newcastle United",
-  players: [
+export default [
+
 
     /* --- GOALKEEPERS --- */
     { name:"Aaron Ramsdale", club:"Newcastle", league:"Prem", nationality:"England", position:"GK", age:27 },
