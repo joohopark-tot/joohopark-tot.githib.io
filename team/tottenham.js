@@ -1,6 +1,6 @@
 /* --- TOTTENHAM HOTSPUR 2025/26 — VERIFIED (Transfermarkt) --- */
 
-const tottenham = [
+export default [
 
 { name:"Guglielmo Vicario", club:"Spurs", league:"Prem", nationality:"Italy", position:"GK", age:29 },
 { name:"Antonín Kinský", club:"Spurs", league:"Prem", nationality:"Czech Republic", position:"GK", age:22 },
