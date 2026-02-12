@@ -1,83 +1,412 @@
-import { mancity } from './teams/mancity.js';
-import { arsenal } from './teams/arsenal.js';
-import { manutd } from './teams/manutd.js';
-import { liverpool } from './teams/liverpool.js';
-import { spurs } from './teams/spurs.js';
+<!DOCTYPE html>
 
-import { chelsea } from './teams/chelsea.js';
-import { newcastle } from './teams/newcastle.js';
-import { astonvilla } from './teams/astonvilla.js';
+<html lang="en">
 
-export const players = [
-...mancity,
-...arsenal,
-...manutd,
-...liverpool,
-...spurs,
-...chelsea,
-...newcastle,
-...astonvilla
+<head>
+
+    <meta charset="UTF-8">
+
+    <title>Ultimate 2026 Football Guessr - 94 Clubs</title>
+
+    <style>
+
+        body { background:#0f172a; color:white; font-family: 'Segoe UI', sans-serif; text-align:center; padding: 20px; }
+
+        .game-container { max-width: 1100px; margin: 0 auto; position: relative; }
+
+        input { padding:12px; width:350px; border-radius:8px; border:none; font-size:16px; margin-bottom:10px; outline: none; }
+
+        button { padding:12px 24px; border:none; border-radius:8px; background:#2563eb; color:white; cursor:pointer; font-weight:bold; margin: 5px; transition: 0.3s; }
+
+        button:hover { background: #3b82f6; transform: scale(1.05); }
+
+        #suggestions { background:#1e293b; width:350px; margin:0 auto; border-radius:8px; max-height:200px; overflow-y:auto; position: absolute; left: 50%; transform: translateX(-50%); z-index: 100; text-align: left; }
+
+        #suggestions div { padding:10px; cursor:pointer; border-bottom: 1px solid #334155; }
+
+        table { margin:30px auto; border-collapse:separate; border-spacing: 5px; width: 100%; }
+
+        td { padding:15px; border-radius:5px; font-weight:bold; min-width:90px; text-transform: uppercase; font-size: 11px; }
+
+        .green { background:#22c55e; } .yellow { background:#eab308; color:black; } .gray { background:#374151; }
+
+        .header-row td { background: none; color: #94a3b8; border: none; }
+
+    </style>
+
+</head>
+
+<body>
+
+
+<div class="game-container">
+
+    <h1>⚽ 2026 Pro Guessr</h1>
+
+    <p id="status">Neil's game for when they ban it</p>
+
+
+    <div style="position: relative;">
+
+        <input type="text" id="guessInput" placeholder="Start typing player name..." oninput="showSuggestions()" autocomplete="off">
+
+        <div id="suggestions"></div>
+
+    </div>
+
+    <br>
+
+    <button onclick="checkGuess()">SUBMIT GUESS</button>
+
+    <button onclick="initGame()" style="background:#475569;">NEW GAME</button>
+
+
+    <table id="results">
+
+        <tr class="header-row">
+
+            <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
+
+        </tr>
+
+    </table>
+
+</div>
+
+
+<script type="module">
+
+const players = [
+
+    /* --- FULL MANCHESTER CITY 2025/26 SQUAD --- */
+
+    { name:"Gianluigi Donnarumma", club:"Man City", league:"Prem", nationality:"Italy", position:"GK", age:26 },
+
+    { name:"James Trafford", club:"Man City", league:"Prem", nationality:"England", position:"GK", age:23 },
+
+    { name:"Marcus Bettinelli", club:"Man City", league:"Prem", nationality:"England", position:"GK", age:33 },
+
+    { name:"Rúben Dias", club:"Man City", league:"Prem", nationality:"Portugal", position:"DF", age:28 },
+
+    { name:"John Stones", club:"Man City", league:"Prem", nationality:"England", position:"DF", age:31 },
+
+    { name:"Nathan Aké", club:"Man City", league:"Prem", nationality:"Netherlands", position:"DF", age:30 },
+
+    { name:"Marc Guéhi", club:"Man City", league:"Prem", nationality:"England", position:"DF", age:25 },
+
+    { name:"Joško Gvardiol", club:"Man City", league:"Prem", nationality:"Croatia", position:"DF", age:24 },
+
+    { name:"Rayan Aït-Nouri", club:"Man City", league:"Prem", nationality:"Algeria", position:"DF", age:24 },
+
+    { name:"Abdukodir Khusanov", club:"Man City", league:"Prem", nationality:"Uzbekistan", position:"DF", age:21 },
+
+    { name:"Rico Lewis", club:"Man City", league:"Prem", nationality:"England", position:"DF", age:21 },
+
+    { name:"Rodri", club:"Man City", league:"Prem", nationality:"Spain", position:"MF", age:29 },
+
+    { name:"Bernardo Silva", club:"Man City", league:"Prem", nationality:"Portugal", position:"MF", age:31 },
+
+    { name:"Phil Foden", club:"Man City", league:"Prem", nationality:"England", position:"MF", age:25 },
+
+    { name:"Tijjani Reijnders", club:"Man City", league:"Prem", nationality:"Netherlands", position:"MF", age:27 },
+
+    { name:"Mateo Kovačić", club:"Man City", league:"Prem", nationality:"Croatia", position:"MF", age:31 },
+
+    { name:"Rayan Cherki", club:"Man City", league:"Prem", nationality:"France", position:"MF", age:22 },
+
+    { name:"Nico González", club:"Man City", league:"Prem", nationality:"Spain", position:"MF", age:24 },
+
+    { name:"Matheus Nunes", club:"Man City", league:"Prem", nationality:"Portugal", position:"MF", age:27 },
+
+    { name:"Nico O'Reilly", club:"Man City", league:"Prem", nationality:"England", position:"MF", age:20 },
+
+    { name:"Sverre Nypan", club:"Man City", league:"Prem", nationality:"Norway", position:"MF", age:19 },
+
+    { name:"Erling Haaland", club:"Man City", league:"Prem", nationality:"Norway", position:"FW", age:25 },
+
+    { name:"Omar Marmoush", club:"Man City", league:"Prem", nationality:"Egypt", position:"FW", age:27 },
+
+    { name:"Antoine Semenyo", club:"Man City", league:"Prem", nationality:"Ghana", position:"FW", age:26 },
+
+    { name:"Jérémy Doku", club:"Man City", league:"Prem", nationality:"Belgium", position:"FW", age:23 },
+
+    { name:"Savinho", club:"Man City", league:"Prem", nationality:"Brazil", position:"FW", age:21 },
+
+     /* --- FULL ARSENAL 2025/26 SQUAD --- */
+
+    { name:"David Raya", club:"Arsenal", league:"Prem", nationality:"Spain", position:"GK", age:30 },
+
+    { name:"Kepa Arrizabalaga", club:"Arsenal", league:"Prem", nationality:"Spain", position:"GK", age:31 },
+
+    { name:"Tommy Setford", club:"Arsenal", league:"Prem", nationality:"England", position:"GK", age:19 },
+
+    { name:"William Saliba", club:"Arsenal", league:"Prem", nationality:"France", position:"DF", age:24 },
+
+    { name:"Gabriel Magalhães", club:"Arsenal", league:"Prem", nationality:"Brazil", position:"DF", age:28 },
+
+    { name:"Ben White", club:"Arsenal", league:"Prem", nationality:"England", position:"DF", age:28 },
+
+    { name:"Jurriën Timber", club:"Arsenal", league:"Prem", nationality:"Netherlands", position:"DF", age:24 },
+
+    { name:"Riccardo Calafiori", club:"Arsenal", league:"Prem", nationality:"Italy", position:"DF", age:23 },
+
+    { name:"Piero Hincapié", club:"Arsenal", league:"Prem", nationality:"Ecuador", position:"DF", age:24 },
+
+    { name:"Cristhian Mosquera", club:"Arsenal", league:"Prem", nationality:"Spain", position:"DF", age:21 },
+
+    { name:"Jakub Kiwior", club:"Arsenal", league:"Prem", nationality:"Poland", position:"DF", age:25 },
+
+    { name:"Oleksandr Zinchenko", club:"Arsenal", league:"Prem", nationality:"Ukraine", position:"DF", age:29 },
+
+    { name:"Myles Lewis-Skelly", club:"Arsenal", league:"Prem", nationality:"England", position:"DF", age:19 },
+
+    { name:"Martin Ødegaard", club:"Arsenal", league:"Prem", nationality:"Norway", position:"MF", age:27 },
+
+    { name:"Declan Rice", club:"Arsenal", league:"Prem", nationality:"England", position:"MF", age:27 },
+
+    { name:"Mikel Merino", club:"Arsenal", league:"Prem", nationality:"Spain", position:"MF", age:29 },
+
+    { name:"Martín Zubimendi", club:"Arsenal", league:"Prem", nationality:"Spain", position:"MF", age:27 },
+
+    { name:"Christian Nørgaard", club:"Arsenal", league:"Prem", nationality:"Denmark", position:"MF", age:31 },
+
+    { name:"Fábio Vieira", club:"Arsenal", league:"Prem", nationality:"Portugal", position:"MF", age:25 },
+
+    { name:"Bukayo Saka", club:"Arsenal", league:"Prem", nationality:"England", position:"WG", age:24 },
+
+    { name:"Gabriel Martinelli", club:"Arsenal", league:"Prem", nationality:"Brazil", position:"WG", age:24 },
+
+    { name:"Noni Madueke", club:"Arsenal", league:"Prem", nationality:"England", position:"WG", age:23 },
+
+    { name:"Eberechi Eze", club:"Arsenal", league:"Prem", nationality:"England", position:"MF", age:27 },
+
+    { name:"Viktor Gyökeres", club:"Arsenal", league:"Prem", nationality:"Sweden", position:"FW", age:27 },
+
+    { name:"Kai Havertz", club:"Arsenal", league:"Prem", nationality:"Germany", position:"FW", age:26 },
+
+    { name:"Gabriel Jesus", club:"Arsenal", league:"Prem", nationality:"Brazil", position:"FW", age:28 },
+
+    { name:"Leandro Trossard", club:"Arsenal", league:"Prem", nationality:"Belgium", position:"WG", age:31 },
+
+    { name:"Ethan Nwaneri", club:"Arsenal", league:"Prem", nationality:"England", position:"MF", age:18 },
+
+      /* MANCHESTER UNITED (Feb 2026 Roster) */
+
+    { name:"André Onana", club:"Man Utd", league:"Prem", nationality:"Cameroon", position:"GK", age:29 },
+
+    { name:"Leny Yoro", club:"Man Utd", league:"Prem", nationality:"France", position:"DF", age:20 },
+
+    { name:"Matthijs de Ligt", club:"Man Utd", league:"Prem", nationality:"Netherlands", position:"DF", age:26 },
+
+    { name:"Lisandro Martínez", club:"Man Utd", league:"Prem", nationality:"Argentina", position:"DF", age:28 },
+
+    { name:"Harry Maguire", club:"Man Utd", league:"Prem", nationality:"England", position:"DF", age:32 },
+
+    { name:"Diogo Dalot", club:"Man Utd", league:"Prem", nationality:"Portugal", position:"DF", age:26 },
+
+    { name:"Luke Shaw", club:"Man Utd", league:"Prem", nationality:"England", position:"DF", age:30 },
+
+    { name:"Noussair Mazraoui", club:"Man Utd", league:"Prem", nationality:"Morocco", position:"DF", age:28 },
+
+    { name:"Patrick Dorgu", club:"Man Utd", league:"Prem", nationality:"Denmark", position:"DF", age:21 },
+
+    { name:"Bruno Fernandes", club:"Man Utd", league:"Prem", nationality:"Portugal", position:"MF", age:31 },
+
+    { name:"Kobbie Mainoo", club:"Man Utd", league:"Prem", nationality:"England", position:"MF", age:20 },
+
+    { name:"Manuel Ugarte", club:"Man Utd", league:"Prem", nationality:"Uruguay", position:"MF", age:24 },
+
+    { name:"Casemiro", club:"Man Utd", league:"Prem", nationality:"Brazil", position:"MF", age:33 },
+
+    { name:"Mason Mount", club:"Man Utd", league:"Prem", nationality:"England", position:"MF", age:27 },
+
+    { name:"Matheus Cunha", club:"Man Utd", league:"Prem", nationality:"Brazil", position:"FW", age:26 },
+
+    { name:"Rasmus Højlund", club:"Man Utd", league:"Prem", nationality:"Denmark", position:"FW", age:23 },
+
+    { name:"Joshua Zirkzee", club:"Man Utd", league:"Prem", nationality:"Netherlands", position:"FW", age:24 },
+
+    { name:"Bryan Mbeumo", club:"Man Utd", league:"Prem", nationality:"Cameroon", position:"FW", age:26 },
+
+    { name:"Benjamin Šeško", club:"Man Utd", league:"Prem", nationality:"Slovenia", position:"FW", age:22 },
+
+    { name:"Amad Diallo", club:"Man Utd", league:"Prem", nationality:"Ivory Coast", position:"WG", age:23 },
+
+    /* --- FULL LIVERPOOL 2025/26 SQUAD --- */
+
+{ name:"Alisson Becker", club:"Liverpool", league:"Prem", nationality:"Brazil", position:"GK", age:33 },
+
+{ name:"Giorgi Mamardashvili", club:"Liverpool", league:"Prem", nationality:"Georgia", position:"GK", age:25 },
+
+{ name:"Virgil van Dijk", club:"Liverpool", league:"Prem", nationality:"Netherlands", position:"DF", age:34 },
+
+{ name:"Ibrahima Konaté", club:"Liverpool", league:"Prem", nationality:"France", position:"DF", age:26 },
+
+{ name:"Miloš Kerkez", club:"Liverpool", league:"Prem", nationality:"Hungary", position:"DF", age:22 },
+
+{ name:"Jeremie Frimpong", club:"Liverpool", league:"Prem", nationality:"Netherlands", position:"DF", age:25 },
+
+{ name:"Andrew Robertson", club:"Liverpool", league:"Prem", nationality:"Scotland", position:"DF", age:31 },
+
+{ name:"Florian Wirtz", club:"Liverpool", league:"Prem", nationality:"Germany", position:"MF", age:22 },
+
+{ name:"Dominik Szoboszlai", club:"Liverpool", league:"Prem", nationality:"Hungary", position:"MF", age:25 },
+
+{ name:"Alexis Mac Allister", club:"Liverpool", league:"Prem", nationality:"Argentina", position:"MF", age:27 },
+
+{ name:"Mohamed Salah", club:"Liverpool", league:"Prem", nationality:"Egypt", position:"FW", age:33 },
+
+{ name:"Alexander Isak", club:"Liverpool", league:"Prem", nationality:"Sweden", position:"FW", age:26 },
+
+{ name:"Hugo Ekitiké", club:"Liverpool", league:"Prem", nationality:"France", position:"FW", age:23 },
+
+{ name:"Cody Gakpo", club:"Liverpool", league:"Prem", nationality:"Netherlands", position:"FW", age:26 },
+
+{ name:"Federico Chiesa", club:"Liverpool", league:"Prem", nationality:"Italy", position:"FW", age:28 },
+
+{ name:"Rio Ngumoha", club:"Liverpool", league:"Prem", nationality:"England", position:"FW", age:17 },
+
+/* --- TOTTENHAM WINTER SIGNINGS 2026 --- */
+
+{ name: "Conor Gallagher", club: "Spurs", league: "Prem", nationality: "England", position: "MF", age: 26 }, // Signed Jan 2026 for £34m
+
+{ name: "Souza", club: "Spurs", league: "Prem", nationality: "Brazil", position: "DF", age: 19 }, // Signed Jan 2026 from Santos
+
+{ name: "Antonín Kinský", club: "Spurs", league: "Prem", nationality: "Czech Republic", position: "GK", age: 22 }, // Winter Depth Addition
+
+
+/* --- TOTTENHAM FULL SQUAD (Updated 2026) --- */
+
+{ name: "James Maddison", club: "Spurs", league: "Prem", nationality: "England", position: "MF", age: 29 },
+
+{ name: "Mohammed Kudus", club: "Spurs", league: "Prem", nationality: "Ghana", position: "MF", age: 25 },
+
+{ name: "Xavi Simons", club: "Spurs", league: "Prem", nationality: "Netherlands", position: "MF", age: 22 },
+
+{ name: "Cristian Romero", club: "Spurs", league: "Prem", nationality: "Argentina", position: "DF", age: 27 },
+
+{ name: "Micky van de Ven", club: "Spurs", league: "Prem", nationality: "Netherlands", position: "DF", age: 24 },
+
+{ name: "Pedro Porro", club: "Spurs", league: "Prem", nationality: "Spain", position: "DF", age: 26 },
+
+{ name: "Destiny Udogie", club: "Spurs", league: "Prem", nationality: "Italy", position: "DF", age: 23 },
+
+{ name: "Guglielmo Vicario", club: "Spurs", league: "Prem", nationality: "Italy", position: "GK", age: 29 },
+
+{ name: "Dominic Solanke", club: "Spurs", league: "Prem", nationality: "England", position: "FW", age: 28 },
+
+{ name: "Mathys Tel", club: "Spurs", league: "Prem", nationality: "France", position: "FW", age: 20 },
+
+{ name: "Archie Gray", club: "Spurs", league: "Prem", nationality: "England", position: "MF", age: 19 },
+
+{ name: "Lucas Bergvall", club: "Spurs", league: "Prem", nationality: "Sweden", position: "MF", age: 20 },
+
+{ name: "Pape Matar Sarr", club: "Spurs", league: "Prem", nationality: "Senegal", position: "MF", age: 23 }
+
 ];
 
-let secretPlayer;
-let attempts;
+let secretPlayer, attempts;
 
-window.initGame = function() {
-secretPlayer = players[Math.floor(Math.random()*players.length)];
-attempts = 0;
 
-document.getElementById("results").innerHTML = `
-<tr class="header-row">
-<td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
-</tr>`;
+function initGame() {
+
+    secretPlayer = players[Math.floor(Math.random() * players.length)];
+
+    attempts = 0;
+
+    const table = document.getElementById("results");
+
+    table.innerHTML = `<tr class="header-row"><td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td></tr>`;
+
+    document.getElementById("status").innerHTML = "Guess the hidden star!";
+
+    document.getElementById("guessInput").value = "";
+
 }
 
-window.showSuggestions = function() {
-const val = guessInput.value.toLowerCase();
-suggestions.innerHTML = "";
 
-players
-.filter(p => p.name.toLowerCase().includes(val))
-.slice(0,10)
-.forEach(p=>{
-const d=document.createElement("div");
-d.textContent=p.name;
-d.onclick=()=>{
-guessInput.value=p.name;
-suggestions.innerHTML="";
-};
-suggestions.appendChild(d);
-});
+function showSuggestions() {
+
+    const val = document.getElementById("guessInput").value.toLowerCase();
+
+    const sugBox = document.getElementById("suggestions");
+
+    sugBox.innerHTML = "";
+
+    if (!val) return;
+
+    players.filter(p => p.name.toLowerCase().includes(val)).forEach(p => {
+
+        const d = document.createElement("div");
+
+        d.textContent = p.name;
+
+        d.onclick = () => { document.getElementById("guessInput").value = p.name; sugBox.innerHTML = ""; };
+
+        sugBox.appendChild(d);
+
+    });
+
 }
 
-window.checkGuess = function() {
 
-const guess = players.find(
-p=>p.name.toLowerCase()===guessInput.value.toLowerCase()
-);
+function checkGuess() {
 
-if(!guess) return;
+    const input = document.getElementById("guessInput");
 
-const row = results.insertRow(1);
+    const guess = players.find(p => p.name.toLowerCase() === input.value.toLowerCase());
 
-const cell=(text,cls)=>{
-const c=row.insertCell();
-c.textContent=text;
-c.className=cls;
-};
+    if (!guess) return;
 
-cell(guess.name, guess.name===secretPlayer.name?"green":"gray");
-cell(guess.club, guess.club===secretPlayer.club?"green":"gray");
-cell(guess.league, guess.league===secretPlayer.league?"green":"gray");
-cell(guess.nationality, guess.nationality===secretPlayer.nationality?"green":"gray");
-cell(guess.position, guess.position===secretPlayer.position?"green":"gray");
 
-const arrow = guess.age < secretPlayer.age ? "↑" : guess.age > secretPlayer.age ? "↓" : "";
-cell(`${guess.age} ${arrow}`, guess.age===secretPlayer.age?"green":"yellow");
+    attempts++;
 
-if(guess.name===secretPlayer.name){
-status.innerHTML=`🏆 Correct! It was ${secretPlayer.name}`;
+    input.value = "";
+
+
+    const row = document.getElementById("results").insertRow(1);
+
+    const createCell = (text, cls) => {
+
+        const c = row.insertCell();
+
+        c.textContent = text;
+
+        c.className = cls;
+
+    };
+
+
+    createCell(guess.name, guess.name === secretPlayer.name ? "green" : "gray");
+
+    createCell(guess.club, guess.club === secretPlayer.club ? "green" : (guess.league === secretPlayer.league ? "yellow" : "gray"));
+
+    createCell(guess.league, guess.league === secretPlayer.league ? "green" : "gray");
+
+    createCell(guess.nationality, guess.nationality === secretPlayer.nationality ? "green" : "gray");
+
+    createCell(guess.position, guess.position === secretPlayer.position ? "green" : "gray");
+
+    
+
+    const arrow = guess.age < secretPlayer.age ? "↑" : (guess.age > secretPlayer.age ? "↓" : "");
+
+    createCell(`${guess.age} ${arrow}`, guess.age === secretPlayer.age ? "green" : "yellow");
+
+
+    if (guess.name === secretPlayer.name) {
+
+        document.getElementById("status").innerHTML = `🏆 <b>Correct! It was ${secretPlayer.name}!</b>`;
+
+    }
+
 }
-}
+
 
 initGame();
+
+</>
+
+</body>
+
+</html>
