@@ -1,6 +1,5 @@
-const chelsea = {
-  name: "Chelsea",
-  players: [
+export default [
+
 
     { name:"Robert Sánchez", club:"Chelsea", league:"Prem", nationality:"Spain", position:"GK", age:28 },
     { name:"Filip Jørgensen", club:"Chelsea", league:"Prem", nationality:"Denmark", position:"GK", age:23 },
