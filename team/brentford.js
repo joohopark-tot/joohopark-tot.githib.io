@@ -1,4 +1,5 @@
-export default [
+export const brentford = [
+
 
 
     { name:"Caoimhín Kelleher", club:"Brentford", league:"Prem", nationality:"Ireland", position:"GK", age:27 },
