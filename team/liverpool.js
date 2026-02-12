@@ -1,6 +1,5 @@
-const liverpool = {
-  name: "Liverpool",
-  players: [
+export default [
+
 
     { name:"Giorgi Mamardashvili", club:"Liverpool", league:"Prem", nationality:"Georgia", position:"GK", age:25 },
     { name:"Alisson", club:"Liverpool", league:"Prem", nationality:"Brazil", position:"GK", age:33 },
