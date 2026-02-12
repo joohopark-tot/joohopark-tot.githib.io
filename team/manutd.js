@@ -1,6 +1,7 @@
 /* --- MANCHESTER UNITED 2025/26 (Transfermarkt Verified) --- */
 
-const manUnited = [
+export default [
+
 
 { name:"Senne Lammens", club:"Man Utd", league:"Prem", nationality:"Belgium", position:"GK", age:23 },
 { name:"Altay Bayındır", club:"Man Utd", league:"Prem", nationality:"Turkey", position:"GK", age:27 },
