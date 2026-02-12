@@ -1,4 +1,5 @@
-export default [
+export const brighton = [
+
 
 
     { name:"Bart Verbruggen", club:"Brighton", league:"Prem", nationality:"Netherlands", position:"GK", age:23 },
