@@ -1,6 +1,5 @@
-const fulham = {
-  name: "Fulham",
-  players: [
+export default [
+
 
     { name:"Bernd Leno", club:"Fulham", league:"Prem", nationality:"Germany", position:"GK", age:33 },
     { name:"Benjamin Lecomte", club:"Fulham", league:"Prem", nationality:"France", position:"GK", age:34 },
