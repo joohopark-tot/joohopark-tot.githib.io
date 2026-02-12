@@ -1,6 +1,5 @@
-const leeds = {
-  name: "Leeds",
-  players: [
+export default [
+
 
     { name:"Lucas Perri", club:"Leeds", league:"Prem", nationality:"Brazil", position:"GK", age:28 },
     { name:"Illan Meslier", club:"Leeds", league:"Prem", nationality:"France", position:"GK", age:25 },
