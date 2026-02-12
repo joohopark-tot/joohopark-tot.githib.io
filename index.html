@@ -1,55 +1,33 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
-
 <head>
-
     <meta charset="UTF-8">
     <title>Ultimate 2026 Football Guessr - 94 Clubs</title>
-
     <style>
-
         body { background:#0f172a; color:white; font-family: 'Segoe UI', sans-serif; text-align:center; padding: 20px; }
-
         .game-container { max-width: 1100px; margin: 0 auto; position: relative; }
-
         input { padding:12px; width:350px; border-radius:8px; border:none; font-size:16px; margin-bottom:10px; outline: none; }
-
         button { padding:12px 24px; border:none; border-radius:8px; background:#2563eb; color:white; cursor:pointer; font-weight:bold; margin: 5px; transition: 0.3s; }
-
         button:hover { background: #3b82f6; transform: scale(1.05); }
-
-        #suggestions { background:#1e293b; z-index:9999; width:350px; margin:0 auto; border-radius:8px; max-height:200px; overflow-y:auto; position: absolute; left: 50%; transform: translateX(-50%); z-index: 100; text-align: left; }
-
+        #suggestions { background:#1e293b; width:350px; margin:0 auto; border-radius:8px; max-height:200px; overflow-y:auto; position: absolute; left: 50%; transform: translateX(-50%); z-index: 100; text-align: left; }
         #suggestions div { padding:10px; cursor:pointer; border-bottom: 1px solid #334155; }
-
         table { margin:30px auto; border-collapse:separate; border-spacing: 5px; width: 100%; }
-
         td { padding:15px; border-radius:5px; font-weight:bold; min-width:90px; text-transform: uppercase; font-size: 11px; }
-
-        .green { background:#22c55e; } 
-        .yellow { background:#eab308; color:black; } 
-        .gray { background:#374151; }
-
+        .green { background:#22c55e; } .yellow { background:#eab308; color:black; } .gray { background:#374151; }
         .header-row td { background: none; color: #94a3b8; border: none; }
-
     </style>
-
 </head>
-
 <body>
 
 <div class="game-container">
-
     <h1>⚽ 2026 Pro Guessr</h1>
-    <p id="status">Neil's game for when they ban it</p>
+    <p id="status">Jooho's game for when they ban it</p>
 
     <div style="position: relative;">
         <input type="text" id="guessInput" placeholder="Start typing player name..." oninput="showSuggestions()" autocomplete="off">
         <div id="suggestions"></div>
     </div>
-
     <br>
-
     <button onclick="checkGuess()">SUBMIT GUESS</button>
     <button onclick="initGame()" style="background:#475569;">NEW GAME</button>
 
@@ -58,159 +36,65 @@
             <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
         </tr>
     </table>
-
 </div>
 
-
-<!-- ✅ ONLY MAJOR CHANGE IS HERE -->
-<script type="module">
-
-import { arsenal } from "./team/arsenal.js";
-import { astonvilla } from "./team/astonvilla.js";
-import { bournemouth } from "./team/bournemouth.js";
-import { brentford } from "./team/brentford.js";
-import { brighton } from "./team/brighton.js";
-import { burnley } from "./team/burnley.js";
-import { chelsea } from "./team/chelsea.js";
-import { everton } from "./team/everton.js";
-import { fulham } from "./team/fulham.js";
-import { leeds } from "./team/leeds.js";
-import { liverpool } from "./team/liverpool.js";
-import { mancity } from "./team/mancity.js";
-import { manutd } from "./team/manutd.js";
-import { newcastle } from "./team/newcastle.js";
-import { nottingham } from "./team/nottingham.js";
-import { palace } from "./team/palace.js";
-import { sunderland } from "./team/sunderland.js";
-import { tottenham } from "./team/tottenham.js";
-import { westham } from "./team/westham.js";
-import { wolves } from "./team/wolves.js";
-
-
-/* ✅ replaces giant array */
-const teams = [
-  arsenal,
-  astonvilla,
-  bournemouth,
-  brentford,
-  brighton,
-  burnley,
-  chelsea,
-  everton,
-  fulham,
-  leeds,
-  liverpool,
-  mancity,
-  manutd,
-  newcastle,
-  nottingham,
-  palace,
-  sunderland,
-  tottenham,
-  westham,
-  wolves
-];
-
-const players = teams.flat();
-
-
-
+<script type="module"></script><script>
+import players from "./team/allPlayers.js";
 let secretPlayer, attempts;
 
-window.initGame = function() {
-
+function initGame() {
     secretPlayer = players[Math.floor(Math.random() * players.length)];
-
     attempts = 0;
-
     const table = document.getElementById("results");
-
     table.innerHTML = `<tr class="header-row"><td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td></tr>`;
-
     document.getElementById("status").innerHTML = "Guess the hidden star!";
-
     document.getElementById("guessInput").value = "";
-
 }
 
-
-window.showSuggestions = function() {
-
+function showSuggestions() {
     const val = document.getElementById("guessInput").value.toLowerCase();
-
     const sugBox = document.getElementById("suggestions");
-
     sugBox.innerHTML = "";
-
     if (!val) return;
-
     players.filter(p => p.name.toLowerCase().includes(val)).forEach(p => {
-
         const d = document.createElement("div");
-
         d.textContent = p.name;
-
-        d.onclick = () => { 
-            document.getElementById("guessInput").value = p.name; 
-            sugBox.innerHTML = ""; 
-        };
-
+        d.onclick = () => { document.getElementById("guessInput").value = p.name; sugBox.innerHTML = ""; };
         sugBox.appendChild(d);
-
     });
-
 }
 
-
-window.checkGuess = function() {
-
+function checkGuess() {
     const input = document.getElementById("guessInput");
-
     const guess = players.find(p => p.name.toLowerCase() === input.value.toLowerCase());
-
     if (!guess) return;
 
     attempts++;
-
     input.value = "";
 
     const row = document.getElementById("results").insertRow(1);
-
     const createCell = (text, cls) => {
-
         const c = row.insertCell();
-
         c.textContent = text;
-
         c.className = cls;
-
     };
 
     createCell(guess.name, guess.name === secretPlayer.name ? "green" : "gray");
-
     createCell(guess.club, guess.club === secretPlayer.club ? "green" : (guess.league === secretPlayer.league ? "yellow" : "gray"));
-
     createCell(guess.league, guess.league === secretPlayer.league ? "green" : "gray");
-
     createCell(guess.nationality, guess.nationality === secretPlayer.nationality ? "green" : "gray");
-
     createCell(guess.position, guess.position === secretPlayer.position ? "green" : "gray");
-
+   
     const arrow = guess.age < secretPlayer.age ? "↑" : (guess.age > secretPlayer.age ? "↓" : "");
-
     createCell(`${guess.age} ${arrow}`, guess.age === secretPlayer.age ? "green" : "yellow");
 
     if (guess.name === secretPlayer.name) {
-
         document.getElementById("status").innerHTML = `🏆 <b>Correct! It was ${secretPlayer.name}!</b>`;
-
     }
-
 }
 
 initGame();
-
-</script>
-
+</<script type="module"></script>
 </body>
 </html>
+
