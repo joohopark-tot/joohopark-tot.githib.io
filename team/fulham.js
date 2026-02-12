@@ -1,4 +1,5 @@
-export default [
+export const fulham = [
+
 
 
     { name:"Bernd Leno", club:"Fulham", league:"Prem", nationality:"Germany", position:"GK", age:33 },
