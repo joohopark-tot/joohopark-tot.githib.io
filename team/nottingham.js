@@ -1,6 +1,5 @@
-const nottinghamForest = {
-  name: "Nottingham Forest",
-  players: [
+export default [
+
 
     { name:"John Victor", club:"Nottingham Forest", league:"Prem", nationality:"Brazil", position:"GK", age:29 },
     { name:"Matz Sels", club:"Nottingham Forest", league:"Prem", nationality:"Belgium", position:"GK", age:33 },
