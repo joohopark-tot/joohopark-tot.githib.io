@@ -1,4 +1,5 @@
-export default [
+export const everton = [
+
 
 
     { name:"Jordan Pickford", club:"Everton", league:"Prem", nationality:"England", position:"GK", age:31 },
