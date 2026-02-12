@@ -1,4 +1,4 @@
-export default [
+export const arsenal = [
 
 
     { name:"David Raya", club:"Arsenal", league:"Prem", nationality:"Spain", position:"GK", age:30 },
