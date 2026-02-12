@@ -1,6 +1,7 @@
 /* --- MANCHESTER UNITED 2025/26 (Transfermarkt Verified) --- */
 
-export default [
+export const manutd = [
+
 
 
 { name:"Senne Lammens", club:"Man Utd", league:"Prem", nationality:"Belgium", position:"GK", age:23 },
