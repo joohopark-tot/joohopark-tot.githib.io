@@ -1,6 +1,5 @@
-const sunderland = {
-  name: "Sunderland",
-  players: [
+export default [
+
 
     { name:"Robin Roefs", club:"Sunderland", league:"Prem", nationality:"Netherlands", position:"GK", age:23 },
     { name:"Melker Ellborg", club:"Sunderland", league:"Prem", nationality:"Sweden", position:"GK", age:22 },
