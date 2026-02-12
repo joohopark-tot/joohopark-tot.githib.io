@@ -1,6 +1,5 @@
-const brentford = {
-  name: "Brentford",
-  players: [
+export default [
+
 
     { name:"Caoimhín Kelleher", club:"Brentford", league:"Prem", nationality:"Ireland", position:"GK", age:27 },
     { name:"Hákon Valdimarsson", club:"Brentford", league:"Prem", nationality:"Iceland", position:"GK", age:24 },
