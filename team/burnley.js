@@ -1,6 +1,5 @@
-const burnley = {
-  name: "Burnley",
-  players: [
+export default [
+
 
     { name:"Max Weiß", club:"Burnley", league:"Prem", nationality:"Germany", position:"GK", age:21 },
     { name:"Martin Dúbravka", club:"Burnley", league:"Prem", nationality:"Slovakia", position:"GK", age:37 },
