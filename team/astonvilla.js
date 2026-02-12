@@ -1,4 +1,5 @@
-export default [
+export const astonvilla = [
+
 
 
     { name:"Emiliano Martínez", club:"Aston Villa", league:"Prem", nationality:"Argentina", position:"GK", age:33 },
