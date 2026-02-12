@@ -1,4 +1,5 @@
-export default [
+export const chelsea = [
+
 
 
     { name:"Robert Sánchez", club:"Chelsea", league:"Prem", nationality:"Spain", position:"GK", age:28 },
