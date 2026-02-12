@@ -19,28 +19,25 @@ import { tottenham } from "./team/tottenham.js";
 import { westham } from "./team/westham.js";
 import { wolves } from "./team/wolves.js";
 
-
-/* ✅ replaces giant array */
 export default [
-  arsenal,
-  astonvilla,
-  bournemouth,
-  brentford,
-  brighton,
-  burnley,
-  chelsea,
-  everton,
-  fulham,
-  leeds,
-  liverpool,
-  mancity,
-  manutd,
-  newcastle,
-  nottingham,
-  palace,
-  sunderland,
-  tottenham,
-  westham,
-  wolves
+  ...arsenal,
+  ...astonvilla,
+  ...bournemouth,
+  ...brentford,
+  ...brighton,
+  ...burnley,
+  ...chelsea,
+  ...everton,
+  ...fulham,
+  ...leeds,
+  ...liverpool,
+  ...mancity,
+  ...manutd,
+  ...newcastle,
+  ...nottingham,
+  ...palace,
+  ...sunderland,
+  ...tottenham,
+  ...westham,
+  ...wolves
 ];
-
