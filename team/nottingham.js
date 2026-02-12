@@ -1,4 +1,5 @@
-export default [
+export const nottingham = [
+
 
 
     { name:"John Victor", club:"Nottingham Forest", league:"Prem", nationality:"Brazil", position:"GK", age:29 },
