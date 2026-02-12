@@ -1,6 +1,5 @@
-const brighton = {
-  name: "Brighton",
-  players: [
+export default [
+
 
     { name:"Bart Verbruggen", club:"Brighton", league:"Prem", nationality:"Netherlands", position:"GK", age:23 },
     { name:"Jason Steele", club:"Brighton", league:"Prem", nationality:"England", position:"GK", age:35 },
