@@ -1,6 +1,5 @@
-const arsenal = {
-  name: "Arsenal",
-  players: [
+export default [
+
 
     { name:"David Raya", club:"Arsenal", league:"Prem", nationality:"Spain", position:"GK", age:30 },
     { name:"Kepa Arrizabalaga", club:"Arsenal", league:"Prem", nationality:"Spain", position:"GK", age:31 },
