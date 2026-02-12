@@ -1,6 +1,5 @@
-const everton = {
-  name: "Everton",
-  players: [
+export default [
+
 
     { name:"Jordan Pickford", club:"Everton", league:"Prem", nationality:"England", position:"GK", age:31 },
     { name:"Mark Travers", club:"Everton", league:"Prem", nationality:"Ireland", position:"GK", age:26 },
