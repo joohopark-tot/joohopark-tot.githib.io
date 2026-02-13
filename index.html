@@ -30,6 +30,7 @@
     <br>
     <button onclick="checkGuess()">SUBMIT GUESS</button>
     <button onclick="initGame()" style="background:#475569;">NEW GAME</button>
+    <button onclick="giveUp()" style="background:#ef4444;">GIVE UP</button>
 
     <table id="results">
         <tr class="header-row">
@@ -54,8 +55,12 @@ function initGame() {
         </tr>`;
 
     document.getElementById("status").innerHTML = "Guess the hidden star!";
-    document.getElementById("guessInput").value = "";
+    
+    const input = document.getElementById("guessInput");
+    input.value = "";
+    input.disabled = false; // ⭐ IMPORTANT
 }
+
 
 //////////////////////////////////////////////////////
 // GOOGLE STYLE SEARCH
@@ -97,6 +102,24 @@ window.checkGuess = function() {
         p => p.name.toLowerCase() === input.value.toLowerCase()
     );
 
+window.giveUp = function() {
+
+    document.getElementById("status").innerHTML =
+        `💀 You gave up! The player was <b>${secretPlayer.name}</b>`;
+
+    const row = document.getElementById("results").insertRow(1);
+
+    ["name","club","league","nationality","position","age"]
+        .forEach(key => {
+            const c = row.insertCell();
+            c.textContent = secretPlayer[key];
+            c.className = "green";
+        });
+
+    document.getElementById("guessInput").disabled = true;
+};
+
+    
     if (!guess) return;
 
     attempts++;
