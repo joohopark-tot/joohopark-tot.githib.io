@@ -2,8 +2,6 @@
 
 export const mancity = [
 
-
-
 { name:"Gianluigi Donnarumma", club:"Man City", league:"Prem", nationality:"Italy", position:"GK", age:26 },
 { name:"James Trafford", club:"Man City", league:"Prem", nationality:"England", position:"GK", age:23 },
 { name:"Marcus Bettinelli", club:"Man City", league:"Prem", nationality:"England", position:"GK", age:33 },
@@ -33,6 +31,5 @@ export const mancity = [
 { name:"Antoine Semenyo", club:"Man City", league:"Prem", nationality:"Ghana", position:"FW", age:26 },
 { name:"Erling Haaland", club:"Man City", league:"Prem", nationality:"Norway", position:"FW", age:25 },
 { name:"Omar Marmoush", club:"Man City", league:"Prem", nationality:"Egypt", position:"FW", age:27 }
-
-];
+ ];
 
