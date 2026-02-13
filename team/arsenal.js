@@ -29,6 +29,5 @@ export const arsenal = [
     { name:"Kai Havertz", club:"Arsenal", league:"Prem", nationality:"Germany", position:"FW", age:26 },
     { name:"Gabriel Jesus", club:"Arsenal", league:"Prem", nationality:"Brazil", position:"FW", age:27 }
 
-  ]
-};
+  ];
 
