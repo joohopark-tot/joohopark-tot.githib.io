@@ -31,7 +31,5 @@ export const liverpool = [
     { name:"Federico Chiesa", club:"Liverpool", league:"Prem", nationality:"Italy", position:"FW", age:28 },
     { name:"Alexander Isak", club:"Liverpool", league:"Prem", nationality:"Sweden", position:"FW", age:26 },
     { name:"Hugo Ekitiké", club:"Liverpool", league:"Prem", nationality:"France", position:"FW", age:23 }
-
-  ]
-};
+ ];
 
