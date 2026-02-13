@@ -33,7 +33,5 @@ export const sunderland = [
     { name:"Eliezer Mayenda", club:"Sunderland", league:"Prem", nationality:"Spain", position:"FW", age:20 },
     { name:"Wilson Isidor", club:"Sunderland", league:"Prem", nationality:"France", position:"FW", age:25 },
     { name:"Ahmed Abdullahi", club:"Sunderland", league:"Prem", nationality:"Nigeria", position:"FW", age:21 }
-
-  ]
-};
+ ];
 
