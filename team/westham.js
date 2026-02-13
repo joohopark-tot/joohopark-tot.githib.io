@@ -26,7 +26,5 @@ export const westham = [
     { name:"Taty Castellanos", club:"West Ham", league:"Prem", nationality:"Argentina", position:"FW", age:27 },
     { name:"Callum Wilson", club:"West Ham", league:"Prem", nationality:"England", position:"FW", age:33 },
     { name:"Pablo", club:"West Ham", league:"Prem", nationality:"Brazil", position:"FW", age:22 }
-
-  ]
-};
+ ];
 
