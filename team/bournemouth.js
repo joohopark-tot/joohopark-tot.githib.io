@@ -31,5 +31,5 @@ export const bournemouth = [
     { name:"Rayan", club:"Bournemouth", league:"Prem", nationality:"Brazil", position:"FW", age:19 },
     { name:"Junior Kroupi", club:"Bournemouth", league:"Prem", nationality:"France", position:"FW", age:19 },
     { name:"Enes Ünal", club:"Bournemouth", league:"Prem", nationality:"Turkey", position:"FW", age:28 }
-];
+ ];
 
