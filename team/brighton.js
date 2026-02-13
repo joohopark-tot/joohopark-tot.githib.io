@@ -31,7 +31,5 @@ export const brighton = [
     { name:"Charalampos Kostoulas", club:"Brighton", league:"Prem", nationality:"Greece", position:"FW", age:18 },
     { name:"Stefanos Tzimas", club:"Brighton", league:"Prem", nationality:"Greece", position:"FW", age:20 },
     { name:"Danny Welbeck", club:"Brighton", league:"Prem", nationality:"England", position:"FW", age:35 }
-
-  ]
-};
+ ];
 
