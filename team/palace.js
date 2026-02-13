@@ -33,7 +33,5 @@ export const palace = [
     { name:"Jørgen Strand Larsen", club:"Crystal Palace", league:"Prem", nationality:"Norway", position:"FW", age:26 },
     { name:"Eddie Nketiah", club:"Crystal Palace", league:"Prem", nationality:"England", position:"FW", age:26 },
     { name:"Christantus Uche", club:"Crystal Palace", league:"Prem", nationality:"Nigeria", position:"FW", age:22 }
-
-  ]
-};
+ ];
 
