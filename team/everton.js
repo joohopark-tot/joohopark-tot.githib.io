@@ -30,6 +30,4 @@ export const everton = [
     { name:"Tyler Dibling", club:"Everton", league:"Prem", nationality:"England", position:"FW", age:19 },
     { name:"Thierno Barry", club:"Everton", league:"Prem", nationality:"France", position:"FW", age:23 },
     { name:"Beto", club:"Everton", league:"Prem", nationality:"Guinea-Bissau", position:"FW", age:28 }
-
-  ]
-};
+ ];
