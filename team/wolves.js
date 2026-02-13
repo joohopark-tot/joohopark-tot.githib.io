@@ -28,7 +28,5 @@ export const wolves = [
     { name:"Hee-chan Hwang", club:"Wolves", league:"Prem", nationality:"South Korea", position:"FW", age:30 },
     { name:"Adam Armstrong", club:"Wolves", league:"Prem", nationality:"England", position:"FW", age:29 },
     { name:"Nathan Fraser", club:"Wolves", league:"Prem", nationality:"Ireland", position:"FW", age:20 }
-
-  ]
-};
+ ];
 
