@@ -34,7 +34,5 @@ export const chelsea = [
     { name:"João Pedro", club:"Chelsea", league:"Prem", nationality:"Brazil", position:"FW", age:24 },
     { name:"Liam Delap", club:"Chelsea", league:"Prem", nationality:"England", position:"FW", age:23 },
     { name:"Marc Guiu", club:"Chelsea", league:"Prem", nationality:"Spain", position:"FW", age:20 }
-
-  ]
-};
+ ];
 
