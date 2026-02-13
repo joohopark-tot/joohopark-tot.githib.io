@@ -34,7 +34,5 @@ export const nottingham = [
     { name:"Igor Jesus", club:"Nottingham Forest", league:"Prem", nationality:"Brazil", position:"FW", age:24 },
     { name:"Taiwo Awoniyi", club:"Nottingham Forest", league:"Prem", nationality:"Nigeria", position:"FW", age:28 },
     { name:"Chris Wood", club:"Nottingham Forest", league:"Prem", nationality:"New Zealand", position:"FW", age:34 }
-
-  ]
-};
+ ];
 
