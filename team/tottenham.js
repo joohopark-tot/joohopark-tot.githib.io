@@ -34,5 +34,4 @@ export const tottenham = [
 { name:"Mathys Tel", club:"Spurs", league:"Prem", nationality:"France", position:"FW", age:20 },
 { name:"Richarlison", club:"Spurs", league:"Prem", nationality:"Brazil", position:"FW", age:28 },
 { name:"Randal Kolo Muani", club:"Spurs", league:"Prem", nationality:"France", position:"FW", age:27 }
-
-];
+ ];
