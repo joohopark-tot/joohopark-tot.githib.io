@@ -31,7 +31,5 @@ export const leeds = [
     { name:"Dominic Calvert-Lewin", club:"Leeds", league:"Prem", nationality:"England", position:"FW", age:28 },
     { name:"Joël Piroe", club:"Leeds", league:"Prem", nationality:"Suriname", position:"FW", age:26 },
     { name:"Lukas Nmecha", club:"Leeds", league:"Prem", nationality:"Germany", position:"FW", age:27 }
-
-  ]
-};
+ ];
 
