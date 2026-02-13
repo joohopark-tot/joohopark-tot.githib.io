@@ -95,7 +95,33 @@ window.showSuggestions = function() {
 };
 
 //////////////////////////////////////////////////////
+window.gethint = function() {if (!secretPlayer) return;
+    
+    const hintBox = document.getElementById("hintText");
+    
+    // Logic: Cycle through hints or show a specific one
+    // Here we show Nationality and Position
+    hintBox.innerHTML = `Hint: This player is from <b>${secretPlayer.nationality}</b> and plays as a <b>${secretPlayer.position}</b>.`;
+};
 
+// 2. Update your existing initGame function to clear the hint
+function initGame() {
+    secretPlayer = players[Math.floor(Math.random() * players.length)];
+    attempts = 0;
+
+    document.getElementById("results").innerHTML =
+        `<tr class="header-row">
+            <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
+        </tr>`;
+
+    document.getElementById("status").innerHTML = "Jooho's game for when they ban it (2026)";
+    document.getElementById("hintText").innerHTML = ""; // <-- CLEAR HINT HERE
+    
+    const input = document.getElementById("guessInput");
+    input.value = "";
+    input.disabled = false;
+}
+    
 window.checkGuess = function() {
 
     const input = document.getElementById("guessInput");
