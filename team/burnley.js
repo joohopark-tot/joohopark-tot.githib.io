@@ -34,6 +34,4 @@ export const burnley = [
     { name:"Armando Broja", club:"Burnley", league:"Prem", nationality:"Albania", position:"FW", age:24 },
     { name:"Zeki Amdouni", club:"Burnley", league:"Prem", nationality:"Switzerland", position:"FW", age:25 },
     { name:"Ashley Barnes", club:"Burnley", league:"Prem", nationality:"Austria", position:"FW", age:36 }
-
-  ]
-};
+ ];
