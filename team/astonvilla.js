@@ -30,7 +30,5 @@ export const astonvilla = [
     { name:"Alysson", club:"Aston Villa", league:"Prem", nationality:"Brazil", position:"FW", age:19 },
     { name:"Ollie Watkins", club:"Aston Villa", league:"Prem", nationality:"England", position:"FW", age:30 },
     { name:"Tammy Abraham", club:"Aston Villa", league:"Prem", nationality:"England", position:"FW", age:28 }
-
-  ]
-};
+];
 
