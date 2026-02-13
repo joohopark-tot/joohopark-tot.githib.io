@@ -47,21 +47,7 @@ import players from "./team/allplayers.js";
 console.log(players.length); // ← PUT IT HERE
 let secretPlayer, attempts;
 
-function initGame() {
-    secretPlayer = players[Math.floor(Math.random() * players.length)];
-    attempts = 0;
 
-    document.getElementById("results").innerHTML =
-        `<tr class="header-row">
-            <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
-        </tr>`;
-
-    document.getElementById("status").innerHTML = " Jooho's game for when they ban it(2026 prem after winter transfer)";
-    
-    const input = document.getElementById("guessInput");
-    input.value = "";
-    input.disabled = false; // ⭐ IMPORTANT
-}
 
 
 //////////////////////////////////////////////////////
@@ -105,22 +91,46 @@ window.gethint = function() {if (!secretPlayer) return;
 };
 
 // 2. Update your existing initGame function to clear the hint
+// Add a variable to track how many hints were used
+let hintsUsed = 0;
+
 function initGame() {
     secretPlayer = players[Math.floor(Math.random() * players.length)];
     attempts = 0;
+    hintsUsed = 0; // Reset hint counter
 
     document.getElementById("results").innerHTML =
         `<tr class="header-row">
             <td>NAME</td><td>CLUB</td><td>LEAGUE</td><td>NATION</td><td>POS</td><td>AGE</td>
         </tr>`;
 
-    document.getElementById("status").innerHTML = "Jooho's game for when they ban it (2026)";
-    document.getElementById("hintText").innerHTML = ""; // <-- CLEAR HINT HERE
+    document.getElementById("status").innerHTML = " Jooho's game for when they ban it (2026 prem after winter transfer)";
+    
+    // CLEAR THE HINT TEXT
+    document.getElementById("hintDisplay").innerHTML = "";
     
     const input = document.getElementById("guessInput");
     input.value = "";
     input.disabled = false;
 }
+
+// THE HINT FUNCTION
+window.getHint = function() {
+    if (!secretPlayer) return;
+    
+    const display = document.getElementById("hintDisplay");
+    hintsUsed++;
+
+    // Progressive Hint Logic:
+    if (hintsUsed === 1) {
+        display.innerHTML = `Hint 1: This player is from <b>${secretPlayer.nationality}</b>`;
+    } else if (hintsUsed === 2) {
+        display.innerHTML = `Hint 2: Plays as a <b>${secretPlayer.position}</b> from <b>${secretPlayer.nationality}</b>`;
+    } else {
+        // Third click gives a big clue
+        display.innerHTML = `Hint 3: Plays in the <b>${secretPlayer.league}</b>`;
+    }
+};
     
 window.checkGuess = function() {
 
