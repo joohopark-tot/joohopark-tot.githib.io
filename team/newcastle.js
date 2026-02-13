@@ -36,6 +36,4 @@ export const newcastle = [
     { name:"Nick Woltemade", club:"Newcastle", league:"Prem", nationality:"Germany", position:"FW", age:23 },
     { name:"Yoane Wissa", club:"Newcastle", league:"Prem", nationality:"DR Congo", position:"FW", age:29 },
     { name:"William Osula", club:"Newcastle", league:"Prem", nationality:"Denmark", position:"FW", age:22 }
-
-  ]
-};
+ ];
