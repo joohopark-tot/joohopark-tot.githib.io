@@ -33,6 +33,5 @@ export const manutd = [
 { name:"Benjamin Šeško", club:"Man Utd", league:"Prem", nationality:"Slovenia", position:"FW", age:22 },
 { name:"Joshua Zirkzee", club:"Man Utd", league:"Prem", nationality:"Netherlands", position:"FW", age:24 },
 { name:"Chido Obi", club:"Man Utd", league:"Prem", nationality:"Denmark", position:"FW", age:17 }
-
-];
+ ];
 
