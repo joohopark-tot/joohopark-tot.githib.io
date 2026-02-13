@@ -31,7 +31,5 @@ export const brentford = [
     { name:"Romelle Donovan", club:"Brentford", league:"Prem", nationality:"England", position:"FW", age:19 },
     { name:"Igor Thiago", club:"Brentford", league:"Prem", nationality:"Brazil", position:"FW", age:24 },
     { name:"Kaye Furo", club:"Brentford", league:"Prem", nationality:"Belgium", position:"FW", age:19 }
-
-  ]
-};
+ ];
 
