@@ -29,7 +29,5 @@ export const fulham = [
     { name:"Rodrigo Muniz", club:"Fulham", league:"Prem", nationality:"Brazil", position:"FW", age:24 },
     { name:"Raúl Jiménez", club:"Fulham", league:"Prem", nationality:"Mexico", position:"FW", age:34 },
     { name:"Jonah Kusi-Asare", club:"Fulham", league:"Prem", nationality:"Sweden", position:"FW", age:18 }
-
-  ]
-};
+ ];
 
