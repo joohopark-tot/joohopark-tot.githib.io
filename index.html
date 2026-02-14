@@ -150,39 +150,7 @@ window.checkGuess = function() {
     );
 
 /* SUGGESTIONS */
-window.showSuggestions = function() {
-    // 1. Get input and normalize it (remove accents from user typing)
-    const val = document.getElementById("guessInput").value
-        .toLowerCase()
-        .normalize("NFD")
-        .replace(/[\u0300-\u036f]/g, "");
-    
-    const sugBox = document.getElementById("suggestions");
-    sugBox.innerHTML = "";
 
-    if (!val) return;
-
-    players
-        .filter(p => {
-            // 2. Normalize the player's name for the comparison
-            const normalizedName = p.name
-                .toLowerCase()
-                .normalize("NFD")
-                .replace(/[\u0300-\u036f]/g, "");
-            
-            return normalizedName.includes(val);
-        })
-        .slice(0, 10) // Limit results so it doesn't overflow
-        .forEach(p => {
-            let d = document.createElement("div");
-            d.textContent = p.name; // Show the original name (with accents)
-            d.onclick = () => {
-                document.getElementById("guessInput").value = p.name;
-                sugBox.innerHTML = "";
-            };
-            sugBox.appendChild(d);
-        });
-};
 
 let giveUpClicked = false;
 
